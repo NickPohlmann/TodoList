@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class App {
+    +main()
+    +start()
+}
+class TodoList {
+    'must hold 100 individual items
+    -title: String
+
+    +addItem()
+    +removeItem()
+    +displayAllItems()
+    +displayCompletedItems()
+    +displayIncompleteItems()
+}
+
+class TodoItem {
+    -description: String
+    -dueDate: Date
+    -isCompleted: boolean
+
+    +editDescription()
+    +editDate()
+    +markComplete()
+}
+
+java.fxApplication <|-- App
+App -- TodoList
+TodoList -- TodoItem
+@enduml

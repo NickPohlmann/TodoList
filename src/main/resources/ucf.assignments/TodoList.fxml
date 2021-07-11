@@ -10,16 +10,16 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.TodoListController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="801.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.TodoListController">
     <children>
-        <TableView fx:id="table" layoutX="187.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <TableView fx:id="table" editable="true" layoutX="187.0" layoutY="25.0" prefHeight="330.0" prefWidth="801.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
             <columns>
-                <TableColumn fx:id="isComplete" prefWidth="75.0" text="Completed" />
-                <TableColumn fx:id="dueDate" prefWidth="75.0" text="Due Date" />
-            <TableColumn fx:id="description" prefWidth="75.0" text="Description" />
+                <TableColumn fx:id="isComplete" onEditCommit="#editIsComplete" prefWidth="75.0" text="Completed" />
+                <TableColumn fx:id="dueDate" onEditCommit="#editDueDate" prefWidth="75.0" text="Due Date" />
+            <TableColumn fx:id="description" onEditCommit="#editDescription" prefWidth="75.0" text="Description" />
             </columns>
         </TableView>
-        <MenuBar layoutX="128.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar layoutX="128.0" layoutY="8.0" AnchorPane.bottomAnchor="373.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
@@ -30,10 +30,10 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ButtonBar layoutX="150.0" layoutY="354.0" prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <ButtonBar layoutX="150.0" layoutY="354.0" prefHeight="48.0" prefWidth="801.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <buttons>
-                <CheckBox fx:id="showCompletedItems" mnemonicParsing="false" onAction="#showCompletedItemsClicked" text="Show Completed Items" />
                 <CheckBox fx:id="showIncompleteItems" mnemonicParsing="false" onAction="#showIncompleteItemsClicked" text="Show Incomplete Items" />
+                <CheckBox fx:id="showCompletedItems" mnemonicParsing="false" onAction="#showCompletedItemsClicked" text="Show Completed Items" />
                 <Button fx:id="addItemButton" mnemonicParsing="false" onAction="#addItemClicked" text="Add Item" />
                 <Button fx:id="removeItem" mnemonicParsing="false" onAction="#removeItemClicked" text="Remove Item" />
             </buttons>

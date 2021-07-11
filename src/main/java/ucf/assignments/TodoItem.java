@@ -24,6 +24,10 @@ public class TodoItem {
         this.isComplete = isComplete;
     }
 
+    public Boolean isComplete() {
+        return isComplete;
+    }
+
     public String getDescription() {
         return this.description;
     }

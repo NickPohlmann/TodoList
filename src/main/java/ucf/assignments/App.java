@@ -20,17 +20,23 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
+        System.out.println("here - START");
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("TodoLists.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ucf.assignments/TodoList.fxml"));
+            Parent root = loader.load();
+            TodoListController controller = loader.getController();
+            controller.setStage(primaryStage);
+
 
             Scene scene = new Scene(root);
 
             primaryStage.setScene(scene);
-            primaryStage.setTitle("Calculator");
+            primaryStage.setTitle("Todo List");
             primaryStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+}
 

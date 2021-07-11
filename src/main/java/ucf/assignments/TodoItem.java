@@ -7,14 +7,44 @@ package ucf.assignments;
 
 import java.util.Date;
 
-public class TodoItem extends TodoList{
+public class TodoItem {
     private String description;
     private Date dueDate;
-    private boolean isComplete;
+    private Boolean isComplete;
 
-    public TodoItem (String description, Date dueDate, boolean isComplete){
+    public TodoItem() {
+        this.description = "";
+        this.isComplete = null;
+        this.isComplete = null;
+    }
+
+    public TodoItem (String description, Date dueDate, Boolean isComplete){
         this.description = description;
         this.dueDate = dueDate;
+        this.isComplete = isComplete;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getDueDate() {
+        return this.dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Boolean getIsComplete() {
+        return this.isComplete;
+    }
+
+    public void setIsComplete(Boolean isComplete) {
         this.isComplete = isComplete;
     }
 }

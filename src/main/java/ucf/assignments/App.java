@@ -20,7 +20,6 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        System.out.println("here - START");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ucf.assignments/TodoList.fxml"));
             Parent root = loader.load();

@@ -1,18 +1,14 @@
 /*
  *  UCF COP3330 Summer 2021 Assignment 4 Solution
- *  Copyright 2021 first_name last_name
+ *  Copyright 2021 Nicholas Pohlmann
  */
 package ucf.assignments;
 
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 

@@ -1,18 +1,19 @@
+/*
+ *  UCF COP3330 Summer 2021 Assignment 4 Solution
+ *  Copyright 2021 Nicholas Pohlmann
+ */
+
 package ucf.assignments;
+
 
 import javafx.collections.transformation.FilteredList;
 import javafx.event.EventHandler;
 import javafx.scene.*;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.*;
@@ -20,18 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Modality;
-import javafx.scene.control.TableView.TableViewSelectionModel;
-import javafx.util.Callback;
 import javafx.util.converter.BooleanStringConverter;
 import javafx.util.converter.DateStringConverter;
-
-import javax.management.Descriptor;
-import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
-
 import java.net.URL;
-
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -112,12 +106,6 @@ public class TodoListController implements Initializable {
     }
 
     @FXML
-    void editItemClicked(ActionEvent event) {
-        TodoItem item = table.getSelectionModel().getSelectedItem();
-
-    }
-
-    @FXML
     void showCompletedItemsClicked(ActionEvent event) {
         filteredList.setPredicate(todoItem -> {
             if (!showCompletedItems.isSelected() && todoItem.getIsComplete()) {
@@ -139,13 +127,8 @@ public class TodoListController implements Initializable {
         });
     }
 
-
-
-
-
     @FXML
     public void addItemClicked(ActionEvent actionEvent) {
-        System.out.println("Adding Item");
         Stage stage = new Stage();
         Parent root = null;
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("ucf.assignments/AddItemModal.fxml"));
@@ -167,15 +150,11 @@ public class TodoListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         todoList = new TodoList();
-        todoList.addItem("Description 2", new Date (2000, 11, 21));
-        todoList.addItem("Description 2", new Date (2000, 11, 21));
-        todoList.addItem("Description 2", new Date (2000, 11, 21));
-        todoList.addItem("description", "2000-11-21", "true");
         filteredList = new FilteredList<TodoItem>(todoList.getList());
         table.setItems(filteredList);
 
         table.setEditable(true);
-        //description.setCellValueFactory(TextFieldTableCell.forTableColumn());
+
         description.setCellFactory(TextFieldTableCell.forTableColumn());
         description.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TodoItem, String>>() {
             @Override
@@ -193,7 +172,6 @@ public class TodoListController implements Initializable {
         });
 
         isComplete.setCellFactory(TextFieldTableCell.forTableColumn(new BooleanStringConverter()));
-        //isComplete.setCellFactory( tc -> new CheckBoxTableCell<>());
         isComplete.setOnEditCommit(new EventHandler<TableColumn.CellEditEvent<TodoItem, Boolean>>() {
             @Override
             public void handle(TableColumn.CellEditEvent<TodoItem, Boolean> t) {
@@ -205,6 +183,7 @@ public class TodoListController implements Initializable {
         showCompletedItems.setSelected(true);
         dueDate.setCellValueFactory(new PropertyValueFactory<TodoItem, Date>("dueDate"));
         isComplete.setCellValueFactory(new PropertyValueFactory<TodoItem, Boolean>("isComplete"));
+
         description.setCellValueFactory(new PropertyValueFactory<TodoItem, String>("description"));
 
 
@@ -224,8 +203,6 @@ public class TodoListController implements Initializable {
 
     public void editIsComplete(TableColumn.CellEditEvent<TodoItem, Boolean> todoItemBooleanCellEditEvent) {
         TodoItem item = table.getSelectionModel().getSelectedItem();
-        //int index = todoList.getList().indexOf(item);
-        //todoList.getList().get(index).setIsComplete((todoItemBooleanCellEditEvent.getNewValue()));
         item.setIsComplete((todoItemBooleanCellEditEvent.getNewValue()));
     }
 }

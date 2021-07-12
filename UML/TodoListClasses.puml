@@ -6,14 +6,14 @@ class App {
     +start()
 }
 class TodoList {
-    'must hold 100 individual items
-    -title: String
+    -list: ObservableList<TodoItem>
 
+    +getList()
     +addItem()
     +removeItem()
-    +displayAllItems()
-    +displayCompletedItems()
-    +displayIncompleteItems()
+    +clearList()
+    +generateExportFile()
+    +importItemsFromFile()
 }
 
 class TodoItem {
@@ -21,12 +21,39 @@ class TodoItem {
     -dueDate: Date
     -isCompleted: boolean
 
+    +getDescription()
+    +setDescription()
+    +getDueDate()
+    +setDueDate()
+    +getIsComplete()
+    +setIsComplete()
+}
+
+class TodoListController {
+    +setStage()
+    +clearListClicked()
+    +exportListClicked()
+    +importListClicked()
+    +removeItemClicked()
+    +showCompletedItemClicked()
+    +showIncompleteItemsClicked()
+    +addItemClicked()
+    +initialize()
     +editDescription()
-    +editDate()
-    +markComplete()
+    +editDueDate()
+    +editIsComplete()
+}
+
+class AddItemModalController {
+    -list: TodoList
+
+    +addNewItemClicked()
+    +setTodoList()
 }
 
 java.fxApplication <|-- App
 App -- TodoList
 TodoList -- TodoItem
+TodoList -- TodoListController
+TodoListController -- AddItemModalController
 @enduml

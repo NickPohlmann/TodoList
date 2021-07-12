@@ -1,8 +1,7 @@
 /*
  *  UCF COP3330 Summer 2021 Assignment 4 Solution
- *  Copyright 2021 first_name last_name
+ *  Copyright 2021 Nicholas Pohlmann
  */
-
 package ucf.assignments;
 
 import java.util.Date;
@@ -12,20 +11,11 @@ public class TodoItem {
     private Date dueDate;
     private Boolean isComplete;
 
-    public TodoItem() {
-        this.description = "";
-        this.isComplete = null;
-        this.isComplete = null;
-    }
 
     public TodoItem (String description, Date dueDate, Boolean isComplete){
         this.description = description;
         this.dueDate = dueDate;
         this.isComplete = isComplete;
-    }
-
-    public Boolean isComplete() {
-        return isComplete;
     }
 
     public String getDescription() {
